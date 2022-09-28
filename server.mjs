@@ -1,12 +1,29 @@
-const express = require('express')
-const app = express()
+console.log("runningg")
+
+import express from 'express';
+import cors from 'cors';
+
 const port = 3000
+const app = express()
 
-app.get('/', (req, res) => {
-    res.send('Hello World!')
+let todos =[];
+app.use(express.json());
+app.use(cors())
+app.post('/todo', (req, res) => {
+
+    todos.push(req.body.text);
+
+    res.send({
+     message:"your todo is saved" ,
+     data:todos  
+    })
 })
 
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
+app.get('/todos',(req,res)=>{
+    res.send({
+        message:"here is your todo list",
+        data:todos
+    })
 })
-//jameel
+    
+
