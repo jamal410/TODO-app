@@ -3,7 +3,7 @@ console.log("runningg")
 import express from 'express';
 import cors from 'cors';
 
-const port = 3000
+const port = 3000 || process.env.PORT
 const app = express()
 
 let todos =[];
